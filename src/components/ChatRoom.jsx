@@ -112,7 +112,7 @@ export default function ChatRoom() {
             )}
 
             {/* Area pesan */}
-            <div ref={messagesContainerRef} className="flex-1 min-h-0 overflow-y-auto border border-white/10 p-3 pr-2 rounded-lg bg-white/5 mb-4 space-y-3 scroll-smooth">
+            <div ref={messagesContainerRef} className="overflow-y-auto max-h-[420px] sm:max-h-[480px] md:max-h-[520px] border border-white/10 p-3 pr-2 rounded-lg bg-white/5 mb-4 space-y-3 scroll-smooth">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
