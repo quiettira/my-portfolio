@@ -17,10 +17,22 @@ import './Lanyard.css';
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 export default function Lanyard({ position = [0, 0, 30], gravity = [0, -40, 0], fov = 20, transparent = true }) {
+  const [isSmall, setIsSmall] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsSmall(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const camPosition = isSmall ? [position[0], position[1], position[2] + 5] : position;
+  const camFov = isSmall ? Math.max(20, fov + 5) : fov;
+
   return (
     <div className="lanyard-wrapper">
       <Canvas
-        camera={{ position: position, fov: fov }}
+        style={{ width: '100%', height: '100%' }}
+        camera={{ position: camPosition, fov: camFov }}
         gl={{ alpha: transparent }}
         onCreated={({ gl }) => gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)}
       >
