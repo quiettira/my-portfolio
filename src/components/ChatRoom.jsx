@@ -19,6 +19,8 @@ export default function ChatRoom() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [audio, setAudio] = useState(null);
   const messagesContainerRef = useRef(null);
+  const [authLoading, setAuthLoading] = useState(false);
+  const [authError, setAuthError] = useState("");
 
   // Cek login
   useEffect(() => {
