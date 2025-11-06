@@ -88,7 +88,7 @@ export default function ChatRoom() {
         <div className="flex flex-col md:flex-row items-stretch gap-6">
 
           {/* Kolom Chat */}
-          <div className="flex-1 bg-white/5 border border-white/10 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg h-full min-h-[520px] flex flex-col">
+          <div className="flex-1 bg-white/5 border border-white/10 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg h-full min-h-[380px] flex flex-col">
             {/* Header user */}
             {user && (
               <div className="flex justify-between items-center mb-4 border-b border-white/10 pb-3">
@@ -112,7 +112,7 @@ export default function ChatRoom() {
             )}
 
             {/* Area pesan */}
-            <div ref={messagesContainerRef} className="overflow-y-auto max-h-[420px] sm:max-h-[480px] md:max-h-[520px] border border-white/10 p-3 pr-2 rounded-lg bg-white/5 mb-4 space-y-3 scroll-smooth">
+            <div ref={messagesContainerRef} className="overflow-y-auto h-[260px] sm:h-[300px] md:h-[340px] border border-white/10 p-3 pr-2 rounded-lg bg-white/5 mb-4 space-y-3 scroll-smooth">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
