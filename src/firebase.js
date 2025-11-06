@@ -1,8 +1,7 @@
 // src/firebase.js
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBgA1DE-DhBbxEC4RifF7olmZoCMtxIDzE",
@@ -15,7 +14,7 @@ const firebaseConfig = {
 };
 
 // Init Firebase
-const app = initializeApp(firebaseConfig);
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 // Auth
 export const auth = getAuth(app);
@@ -26,4 +25,13 @@ export const logout = () => signOut(auth);
 // Firestore
 export const db = getFirestore(app);
 
-const analytics = getAnalytics(app);
+if (typeof window !== "undefined") {
+  import("firebase/analytics").then(async ({ getAnalytics, isSupported }) => {
+    try {
+      if (await isSupported()) {
+        getAnalytics(app);
+      }
+    } catch (_) {
+    }
+  });
+}
