@@ -3,7 +3,7 @@ import MagicBentoProjects from './Bento/MagicBento';
 
 export default function Projects() {
   return (
-    <section className="px-6 sm:px-8 md:px-12 mt-10 md:-mt-14 pt-0 pb-6" id="project">
+    <section className="px-6 sm:px-8 md:px-12 mt-20 md:mt-28 pt-0 pb-6" id="project">
       <div className="max-w-6xl mx-auto">
       <div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true">
         <h1 className="text-center text-4xl font-bold mb-2">
